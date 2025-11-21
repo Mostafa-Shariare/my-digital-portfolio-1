@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
 import { ClerkProvider } from "@clerk/nextjs";
 import { AuthSync } from "@/components/auth-sync";
+import { Analytics } from "@vercel/analytics/react";
 // import {
 //   SignInButton,
 //   SignUpButton,
@@ -41,6 +42,7 @@ export default function RootLayout({
             <Footer />
             <Toaster />
           </div>
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

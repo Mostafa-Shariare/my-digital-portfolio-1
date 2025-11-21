@@ -113,3 +113,11 @@ export const newsletterSubscriptionSchema = z.object({
 });
 
 export type NewsletterSubscription = z.infer<typeof newsletterSubscriptionSchema>;
+
+/**
+ * Newsletter action state for use with useActionState
+ */
+export type NewsletterState = ActionState & {
+  email?: string;
+  name?: string;
+}

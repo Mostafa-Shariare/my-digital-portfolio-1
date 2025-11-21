@@ -42,7 +42,8 @@ export function NewsletterForm() {
       <div className="space-y-2">
         <Input type="text" name="name" placeholder="Your name (optional)" className="bg-background" />
         <div className="flex space-x-2">
-          <Input type="email" name="email" placeholder="Your email address" required className="bg-background" />          <Button type="submit" disabled={state.status === "submitting"}>
+          <Input type="email" name="email" placeholder="Your email address" required className="bg-background" />
+          <Button type="submit" disabled={state.status === "submitting"}>
             {state.status === "submitting" ? "Subscribing..." : "Subscribe"}
           </Button>
         </div>

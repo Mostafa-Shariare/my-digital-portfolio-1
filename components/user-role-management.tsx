@@ -27,23 +27,29 @@ export function UserRoleManagement() {
         setLoadingUsers(true);
         const result = await getUsers();
         
-        if (result.data && result.data.users) {
+        if (result.status === "success" && result.data && result.data.users) {
           setUsers(result.data.users);
         } else {
-          console.error("Failed to load users:", result.errors || result.message);
+          // Handle error status
+          const errorMessage = result.message || "Failed to load users";
+          console.error("Failed to load users:", errorMessage);
           toast({
             title: "Error",
-            description: result.message || "Failed to load users",
+            description: errorMessage,
             variant: "destructive",
           });
+          // Set empty array on error to prevent rendering issues
+          setUsers([]);
         }
       } catch (error) {
         console.error("Error loading users:", error);
+        const errorMessage = error instanceof Error ? error.message : "Failed to load users. Please try again later.";
         toast({
           title: "Error",
-          description: "Failed to load users. Please try again later.",
+          description: errorMessage,
           variant: "destructive",
         });
+        setUsers([]);
       } finally {
         setLoadingUsers(false);
       }

@@ -21,6 +21,9 @@ export default function Navbar() {
     { href: "/about", label: "About" },
     { href: "/blog", label: "Blog" },
     { href: "/projects", label: "Projects" },
+    { href: "/mcp-integration", label: "MCP Integration" },
+    { href: "/professional", label: "Professional" },
+    { href: "/security", label: "Security" },
   ];
   
   const adminLink = { 

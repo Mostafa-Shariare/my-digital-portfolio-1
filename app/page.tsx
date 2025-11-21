@@ -7,6 +7,18 @@ import { NewsletterForm } from "@/components/newsletter-form"
 import { db, blogPosts } from "@/lib/db"
 import { formatDate } from "@/lib/utils"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "CyberShield | Cybersecurity Portfolio",
+  description: "Expert cybersecurity solutions to protect your organization from evolving threats. Penetration testing, security audits, and incident response services.",
+  keywords: ["cybersecurity", "penetration testing", "security audits", "cyber defense", "information security"],
+  openGraph: {
+    title: "CyberShield | Cybersecurity Portfolio",
+    description: "Expert cybersecurity solutions to protect your organization from evolving threats.",
+    type: "website",
+  },
+}
 
 export default async function Home() {
   // Fetch the latest 3 blog posts with error handling
@@ -287,6 +299,143 @@ export default async function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Links Section */}
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+            <div className="space-y-2">
+              <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">Explore</div>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Portfolio Sections</h2>
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
+                Discover all aspects of the portfolio including projects, integrations, demos, and more.
+              </p>
+            </div>
+          </div>
+          <div className="mx-auto grid max-w-5xl items-center gap-6 lg:grid-cols-3 lg:gap-12">
+            <Link href="/projects">
+              <Card className="bg-background border-primary/20 hover:border-primary/50 transition-all cursor-pointer h-full">
+                <CardHeader>
+                  <FileCode className="h-10 w-10 text-primary mb-2" />
+                  <CardTitle>Projects</CardTitle>
+                  <CardDescription>View Week 1-8 project summaries and featured work</CardDescription>
+                </CardHeader>
+              </Card>
+            </Link>
+            <Link href="/mcp-integration">
+              <Card className="bg-background border-primary/20 hover:border-primary/50 transition-all cursor-pointer h-full">
+                <CardHeader>
+                  <Server className="h-10 w-10 text-primary mb-2" />
+                  <CardTitle>MCP Integration</CardTitle>
+                  <CardDescription>Model Context Protocol integration and testing</CardDescription>
+                </CardHeader>
+              </Card>
+            </Link>
+            <Link href="/demo">
+              <Card className="bg-background border-primary/20 hover:border-primary/50 transition-all cursor-pointer h-full">
+                <CardHeader>
+                  <AlertTriangle className="h-10 w-10 text-primary mb-2" />
+                  <CardTitle>Demo</CardTitle>
+                  <CardDescription>Interactive demonstrations of MCP tools</CardDescription>
+                </CardHeader>
+              </Card>
+            </Link>
+            <Link href="/github">
+              <Card className="bg-background border-primary/20 hover:border-primary/50 transition-all cursor-pointer h-full">
+                <CardHeader>
+                  <FileCode className="h-10 w-10 text-primary mb-2" />
+                  <CardTitle>GitHub</CardTitle>
+                  <CardDescription>Explore repositories and open-source projects</CardDescription>
+                </CardHeader>
+              </Card>
+            </Link>
+            <Link href="/professional">
+              <Card className="bg-background border-primary/20 hover:border-primary/50 transition-all cursor-pointer h-full">
+                <CardHeader>
+                  <Shield className="h-10 w-10 text-primary mb-2" />
+                  <CardTitle>Professional</CardTitle>
+                  <CardDescription>Branding guidelines and design system</CardDescription>
+                </CardHeader>
+              </Card>
+            </Link>
+            <Link href="/security">
+              <Card className="bg-background border-primary/20 hover:border-primary/50 transition-all cursor-pointer h-full">
+                <CardHeader>
+                  <Lock className="h-10 w-10 text-primary mb-2" />
+                  <CardTitle>Security</CardTitle>
+                  <CardDescription>Security dashboard and threat model</CardDescription>
+                </CardHeader>
+              </Card>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Security Overview Section */}
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/40">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+            <div className="space-y-2">
+              <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">Security</div>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Security Overview</h2>
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
+                Real-time security monitoring and protection status.
+              </p>
+            </div>
+          </div>
+          <div className="mx-auto grid max-w-5xl items-center gap-6 lg:grid-cols-4 lg:gap-12">
+            <Card className="bg-background border-primary/20">
+              <CardHeader>
+                <Shield className="h-8 w-8 text-primary mb-2" />
+                <CardTitle className="text-lg">WAF</CardTitle>
+                <CardDescription className="text-xs">Web Application Firewall</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-2xl font-bold">Active</p>
+                <p className="text-sm text-muted-foreground">1,234 blocked</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-background border-primary/20">
+              <CardHeader>
+                <Server className="h-8 w-8 text-primary mb-2" />
+                <CardTitle className="text-lg">MCP</CardTitle>
+                <CardDescription className="text-xs">Model Context Protocol</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-2xl font-bold">3</p>
+                <p className="text-sm text-muted-foreground">Active servers</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-background border-primary/20">
+              <CardHeader>
+                <Database className="h-8 w-8 text-primary mb-2" />
+                <CardTitle className="text-lg">Rate Limit</CardTitle>
+                <CardDescription className="text-xs">API Protection</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-2xl font-bold">100/min</p>
+                <p className="text-sm text-muted-foreground">Per IP</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-background border-primary/20">
+              <CardHeader>
+                <FileCode className="h-8 w-8 text-primary mb-2" />
+                <CardTitle className="text-lg">Logs</CardTitle>
+                <CardDescription className="text-xs">Security Events</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-2xl font-bold">12.4K</p>
+                <p className="text-sm text-muted-foreground">Last 24h</p>
+              </CardContent>
+            </Card>
+          </div>
+          <div className="flex justify-center mt-8">
+            <Link href="/security">
+              <Button variant="outline">View Full Dashboard</Button>
+            </Link>
           </div>
         </div>
       </section>

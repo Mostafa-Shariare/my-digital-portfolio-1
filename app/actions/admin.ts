@@ -2,7 +2,7 @@
 
 import { isAdmin, getCurrentUser } from "@/lib/auth";
 import { db, users } from "@/lib/db";
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 import { User, ActionState } from "@/lib/types";
 
 /**
@@ -98,11 +98,11 @@ export async function getUsers(): Promise<ActionState & {data?: {users: User[]}}
       };
     }
     
-    // Get all users ordered by creation date
+    // Get all users ordered by creation date (newest first)
     const usersList = await db
       .select()
       .from(users)
-      .orderBy(users.createdAt);
+      .orderBy(desc(users.createdAt));
     
     return {
       status: "success" as const,
